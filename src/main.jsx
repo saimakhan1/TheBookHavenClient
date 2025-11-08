@@ -8,6 +8,9 @@ import RootLayOut from "./components/LayOut/RootLayOut.jsx";
 import Home from "./components/Home/Home.jsx";
 import AllBooks from "./components/AllBooks/AllBooks.jsx";
 import AuthProvider from "./Contexts/AuthProvider.jsx";
+import Register from "./components/Register/Register.jsx";
+import AddBook from "./components/AddBook/AddBook.jsx";
+import MyBooks from "./components/MyBooks/MyBooks.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +25,18 @@ const router = createBrowserRouter([
       {
         path: "all-books",
         Component: AllBooks,
+      },
+      {
+        path: "/register",
+        Component: Register,
+      },
+      {
+        path: "/addBook",
+        Component: AddBook,
+      },
+      {
+        path: "/myBooks",
+        Component: MyBooks,
       },
     ],
   },
