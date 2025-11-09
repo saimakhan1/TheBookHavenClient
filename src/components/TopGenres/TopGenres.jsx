@@ -2,19 +2,19 @@ import React from "react";
 
 const genres = [
   {
-    name: "Fantasy",
+    name: "Mystery",
     image: "https://i.ibb.co/PfJkykZ/shatterred-Reflections.jpg",
   },
   {
-    name: "Science Fiction",
+    name: "Fantasy",
     image: "https://i.ibb.co/fdp5P6X9/house-Of-Ash.jpg",
   },
   {
-    name: "Mystery",
+    name: "Science Fiction",
     image: "https://i.ibb.co/jZ99DY0k/echostime.jpg",
   },
   {
-    name: "Romance",
+    name: "Adventure",
     image: "https://i.ibb.co/vv4gBMYW/icebound.jpg",
   }
 ];
