@@ -74,7 +74,7 @@ const Navbar = () => {
             Sign Out
           </a>
         ) : (
-          <a className="btn">Log In</a>
+          <NavLink to={'/login'} className="btn">Log In</NavLink>
         )}
       </div>
     </div>

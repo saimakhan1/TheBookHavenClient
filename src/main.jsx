@@ -11,6 +11,9 @@ import AuthProvider from "./Contexts/AuthProvider.jsx";
 import Register from "./components/Register/Register.jsx";
 import AddBook from "./components/AddBook/AddBook.jsx";
 import MyBooks from "./components/MyBooks/MyBooks.jsx";
+import PrivateRoute from "./Routes/PrivateRoute.jsx";
+import BookDetails from "./components/BookDetails/BookDetails.jsx";
+import LogIn from "./components/LogIn/LogIn.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,12 +35,34 @@ const router = createBrowserRouter([
       },
       {
         path: "/addBook",
-        Component: AddBook,
+        element: (
+          <PrivateRoute>
+            <AddBook></AddBook>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myBooks",
-        Component: MyBooks,
+        element: (
+          <PrivateRoute>
+            <MyBooks></MyBooks>
+          </PrivateRoute>
+        ),
       },
+      {
+        path: "/book-details/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/all-books/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <BookDetails></BookDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path:'/login',
+        Component:LogIn
+      }
     ],
   },
 ]);
