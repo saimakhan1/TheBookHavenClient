@@ -7,3 +7,10 @@
   --color-primary: blue;
   --color-secondary: teal;
 } */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import DaisyUI for themes and components */
+@import "daisyui";
