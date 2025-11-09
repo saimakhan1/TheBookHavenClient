@@ -14,12 +14,14 @@ import MyBooks from "./components/MyBooks/MyBooks.jsx";
 import PrivateRoute from "./Routes/PrivateRoute.jsx";
 import BookDetails from "./components/BookDetails/BookDetails.jsx";
 import LogIn from "./components/LogIn/LogIn.jsx";
+import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
 
     Component: RootLayOut,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
