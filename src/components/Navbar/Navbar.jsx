@@ -241,9 +241,9 @@ const Navbar = () => {
                   isActive ? "text-[#cdeeff]" : "text-white hover:text-[#e0f7ff]"
                 }`
               }
-              to="/myBooks"
+              to="/addBook"
             >
-              My Books
+              Add Book
             </NavLink>
           </li>
           <li>
@@ -253,11 +253,12 @@ const Navbar = () => {
                   isActive ? "text-[#cdeeff]" : "text-white hover:text-[#e0f7ff]"
                 }`
               }
-              to="/addBook"
+              to="/myBooks"
             >
-              Add Book
+              My Books
             </NavLink>
           </li>
+        
         </>
       )}
     </>
@@ -294,8 +295,8 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-2xl text-white hover:text-[#48dbfb] transition-colors duration-300">
-          The <span className="text-[#0abde3]">Book</span> Haven
+        <a className="btn btn-ghost text-2xl text-blue-50 hover:text-[#48dbfb] transition-colors duration-300 border-4 rounded border-blue-100 hover:border-blue-200 hover:border-4">
+          The <span className="text-blue-300">Book</span> Haven
         </a>
       </div>
 

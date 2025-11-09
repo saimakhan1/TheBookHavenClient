@@ -236,26 +236,45 @@
 
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
-import { useNavigate } from "react-router";
+import { useNavigate, NavLink } from "react-router";
+import { toast, Toaster } from "react-hot-toast";
 
 const Register = () => {
   const { createUser, signInWithGoogle } = useContext(AuthContext);
+  const [name, setName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // handle email/password register
+  // Password validation
+  const isValidPassword = (password) => {
+    return (
+      /[A-Z]/.test(password) && // at least one uppercase
+      /[a-z]/.test(password) && // at least one lowercase
+      password.length >= 6       // minimum 6 characters
+    );
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
+    if (!isValidPassword(password)) {
+      toast.error(
+        "Password must be at least 6 characters, include uppercase and lowercase letters."
+      );
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log("User registered:", user);
+        toast.success("Registration successful!");
         navigate("/");
+
         const newUser = {
-          name: user.displayName || "Anonymous",
+          name: name || user.displayName || "Anonymous",
           email: user.email,
-          image: user.photoURL || "",
+          image: photoURL || user.photoURL || "",
         };
 
         // save user to database
@@ -267,36 +286,39 @@ const Register = () => {
           body: JSON.stringify(newUser),
         })
           .then((res) => res.json())
-          .then((data) => console.log("User saved:", data));
+          .then((data) => console.log("User saved:", data))
+          .catch((err) => console.log("Database error:", err));
       })
-      .catch((error) => console.log("Registration error:", error.message));
+      .catch((error) => toast.error(`Registration failed: ${error.message}`));
   };
 
-  // handle Google Sign-In 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-        console.log(result.user);
+        toast.success("Google login successful!");
+        navigate("/");
+
         const newUser = {
           name: result.user.displayName,
           email: result.user.email,
           image: result.user.photoURL,
         };
+
         fetch("http://localhost:3000/users", {
           method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
+          headers: { "content-type": "application/json" },
           body: JSON.stringify(newUser),
         })
           .then((res) => res.json())
-          .then((data) => console.log("User saved:", data));
+          .then((data) => console.log("User saved:", data))
+          .catch((err) => console.log("Database error:", err));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(`Google login failed: ${error.message}`));
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#e6f7fa] to-[#d0f0ff] flex justify-center items-center py-10">
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="card w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
         <div className="p-8">
           <h2 className="text-3xl font-bold text-center text-[#0abde3] mb-6">
@@ -304,6 +326,25 @@ const Register = () => {
           </h2>
 
           <form onSubmit={handleRegister} className="flex flex-col gap-4">
+            <label className="label font-semibold text-gray-700">Name</label>
+            <input
+              type="text"
+              className="input input-bordered w-full focus:border-[#0abde3] focus:ring focus:ring-[#0abde3]/30"
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+
+            <label className="label font-semibold text-gray-700">Photo URL</label>
+            <input
+              type="text"
+              className="input input-bordered w-full focus:border-[#0abde3] focus:ring focus:ring-[#0abde3]/30"
+              placeholder="Photo URL"
+              value={photoURL}
+              onChange={(e) => setPhotoURL(e.target.value)}
+            />
+
             <label className="label font-semibold text-gray-700">Email</label>
             <input
               type="email"
@@ -331,6 +372,16 @@ const Register = () => {
               Register Now
             </button>
           </form>
+
+          <p className="text-center text-sm mt-4">
+            Already have an account?{" "}
+            <NavLink
+              to="/login"
+              className="text-blue-500 hover:underline font-semibold"
+            >
+              Log In
+            </NavLink>
+          </p>
 
           <div className="divider text-gray-400 mt-6">OR</div>
 
