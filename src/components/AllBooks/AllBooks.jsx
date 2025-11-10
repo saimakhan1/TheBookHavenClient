@@ -27,7 +27,7 @@ const AllBooks = () => {
 
       <div className="overflow-x-auto bg-white shadow-2xl rounded-2xl p-6 border border-gray-100">
         <table className="table w-full text-center">
-          <thead className="bg-gradient-to-r from-purple-600 to-blue-400 text-white text-lg">
+          <thead className="bg-[#0abde3] text-white text-lg">
             <tr>
               <th className="py-3">#</th>
               <th className="py-3">Book Name</th>
@@ -55,7 +55,7 @@ const AllBooks = () => {
                   <td>
                     <Link
                       to={`/book-details/${book._id}`}
-                      className="bg-gradient-to-r from-blue-500 to-[#0abde3] text-white px-4 py-2 rounded-lg shadow-md hover:opacity-90 transition duration-200"
+                      className="bg-gradient-to-r from-blue-400 to-[#0abde3] text-white px-4 py-2 rounded-lg shadow-md hover:opacity-90 transition duration-200"
                     >
                       View Details
                     </Link>
