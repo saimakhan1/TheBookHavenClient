@@ -41,7 +41,7 @@ const MyBooks = () => {
 
     if (result.isConfirmed) {
       try {
-        const res = await fetch(`http://localhost:3000/all-books/${id}`, {
+        const res = await fetch(`http://localhost:3000/books/${id}`, {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
         });
