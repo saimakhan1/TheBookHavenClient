@@ -74,6 +74,13 @@ import { NavLink } from "react-router";
 
 const Book = ({ book }) => {
   const { _id, title, author, genre, rating, dateAdded, coverImage } = book;
+  function parseDate(dateStr) {
+  const [day, month, year] = dateStr.split("-");
+  return new Date(`${year}-${month}-${day}`);
+}
+
+
+
 
   return (
     <div className="card bg-white w-full sm:max-w-xs md:max-w-sm lg:max-w-md shadow-lg rounded-2xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 mx-auto">
@@ -96,7 +103,7 @@ const Book = ({ book }) => {
           <span className="font-semibold">Rating:</span> {rating}
         </p>
         <p className="text-gray-500 text-xs sm:text-sm mt-1">
-          Added on: {new Date(book.dateAdded).toLocaleDateString()}
+          Added on: {new Date(dateAdded).toLocaleDateString()}
         </p>
         <div className="card-actions mt-4">
           <NavLink

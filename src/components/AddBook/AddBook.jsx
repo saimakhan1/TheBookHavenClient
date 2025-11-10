@@ -199,6 +199,9 @@ const AddBook = () => {
     const summary = form.summary.value;
     const coverImage = form.coverImage.value;
 
+   
+
+
     // ✅ Always use loggedInUser for email/name
     const newBook = {
       title,
@@ -209,10 +212,12 @@ const AddBook = () => {
       coverImage,
       userEmail: loggedInUser?.email || "Unknown",
       userName: loggedInUser?.displayName || loggedInUser?.email || "Unknown",
-      dateAdded: new Date(),
+     dateAdded: new Date().toISOString()
     };
 
     try {
+      console.log("📦 newBook data before POST:", newBook);
+
       const response = await fetch("http://localhost:3000/books", {
         method: "POST",
         headers: {

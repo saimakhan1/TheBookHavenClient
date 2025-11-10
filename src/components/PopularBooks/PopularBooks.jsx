@@ -40,7 +40,7 @@ const PopularBooks = ({ popularBooksPromise }) => {
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4">
         {books
           .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)) // sort by latest date
-          .slice(0, 6) // take the first 6
+          .slice(0, 19) // take the first 6
           .map((book) => (
             <div
               key={book._id}
