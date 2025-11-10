@@ -96,7 +96,7 @@ const Book = ({ book }) => {
           <span className="font-semibold">Rating:</span> {rating}
         </p>
         <p className="text-gray-500 text-xs sm:text-sm mt-1">
-          Added on: {new Date(dateAdded).toLocaleDateString()}
+          Added on: {new Date(book.dateAdded).toLocaleDateString()}
         </p>
         <div className="card-actions mt-4">
           <NavLink
