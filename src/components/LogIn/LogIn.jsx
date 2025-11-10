@@ -165,7 +165,7 @@ const LogIn = () => {
       <div className="card w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
         <div className="p-8">
           <h2 className="text-3xl font-bold text-center text-[#0abde3] mb-6">
-            Welcome Back
+            Please Log In
           </h2>
           <form onSubmit={handleSignInUser} className="flex flex-col gap-4">
             <label className="label font-semibold text-gray-700">Email</label>
@@ -225,6 +225,17 @@ const LogIn = () => {
             </svg>
             Sign In with Google
           </button>
+
+          {/* Register link */}
+          <p className="text-center text-gray-600 mt-4">
+            Don't have an account?{" "}
+            <span
+              className="text-[#0abde3] font-semibold cursor-pointer hover:underline"
+              onClick={() => navigate("/register")}
+            >
+              Register here
+            </span>
+          </p>
         </div>
       </div>
     </div>

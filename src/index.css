@@ -12,5 +12,4 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import DaisyUI for themes and components */
-@import "daisyui";
+
