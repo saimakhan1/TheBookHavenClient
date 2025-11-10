@@ -8,7 +8,6 @@ const MyBooks = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch user's books
   useEffect(() => {
     if (!user?.email) return;
 
@@ -29,7 +28,6 @@ const MyBooks = () => {
     fetchMyBooks();
   }, [user]);
 
-  // Delete book
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -60,7 +58,6 @@ const MyBooks = () => {
     }
   };
 
-  // Update book
   const handleUpdate = (id) => {
     Swal.fire({
       title: "Update Book?",
@@ -72,13 +69,18 @@ const MyBooks = () => {
       confirmButtonText: "Yes, update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Use React Router navigation instead of window.location
         window.location.href = `/update-book/${id}`;
       }
     });
   };
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="w-16 h-16 border-4 border-t-[#0abde3] border-gray-300 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   if (books.length === 0)
     return (
@@ -88,47 +90,89 @@ const MyBooks = () => {
     );
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
+    <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
       <Toaster />
       <h2 className="text-3xl font-bold text-center text-[#0abde3] mb-6">
         My Books
       </h2>
-      <div className="overflow-x-auto">
-        <table className="min-w-full border border-gray-300 rounded-lg">
+
+      {/* Desktop Table */}
+      <div className="hidden md:block overflow-x-auto rounded-lg shadow-lg">
+        <table className="min-w-full border border-gray-300 table-auto">
           <thead className="bg-[#0abde3] text-white">
             <tr>
-              <th className="py-3 px-4 border-b">Title</th>
-              <th className="py-3 px-4 border-b">Author</th>
-              <th className="py-3 px-4 border-b">Genre</th>
-              <th className="py-3 px-4 border-b">Rating</th>
-              <th className="py-3 px-4 border-b">Actions</th>
+              <th className="py-3 px-4 border-b text-left">Title</th>
+              <th className="py-3 px-4 border-b text-left">Author</th>
+              <th className="py-3 px-4 border-b text-left">Genre</th>
+              <th className="py-3 px-4 border-b text-left">Rating</th>
+              <th className="py-3 px-4 border-b text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             {books.map((book) => (
-              <tr key={book._id} className="text-center hover:bg-gray-100">
-                <td className="py-2 px-4 border-b">{book.title}</td>
-                <td className="py-2 px-4 border-b">{book.author}</td>
-                <td className="py-2 px-4 border-b">{book.genre}</td>
-                <td className="py-2 px-4 border-b">{book.rating}</td>
-                <td className="py-2 px-4 border-b space-x-2">
-                  <button
-                    onClick={() => handleUpdate(book._id)}
-                    className="bg-[#74b9ff] hover:bg-blue-600 text-white py-1 px-4 rounded shadow"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => handleDelete(book._id)}
-                    className="bg-[#ff7675] hover:bg-red-600 text-white py-1 px-4 rounded shadow"
-                  >
-                    Delete
-                  </button>
+              <tr
+                key={book._id}
+                className="hover:bg-gray-100 border-b border-gray-200"
+              >
+                <td className="py-2 px-4">{book.title}</td>
+                <td className="py-2 px-4">{book.author}</td>
+                <td className="py-2 px-4">{book.genre}</td>
+                <td className="py-2 px-4">{book.rating}</td>
+                <td className="py-2 px-4">
+                  <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
+                    <button
+                      onClick={() => handleUpdate(book._id)}
+                      className="bg-[#74b9ff] hover:bg-blue-600 text-white py-1 px-4 rounded shadow w-full sm:w-auto"
+                    >
+                      Update
+                    </button>
+                    <button
+                      onClick={() => handleDelete(book._id)}
+                      className="bg-[#ff7675] hover:bg-red-600 text-white py-1 px-4 rounded shadow w-full sm:w-auto"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile Cards */}
+      <div className="md:hidden space-y-4">
+        {books.map((book) => (
+          <div
+            key={book._id}
+            className="bg-white rounded-lg shadow p-4 flex flex-col gap-2 border border-gray-200"
+          >
+            <h3 className="font-bold text-lg text-[#0abde3]">{book.title}</h3>
+            <p>
+              <span className="font-semibold">Author:</span> {book.author}
+            </p>
+            <p>
+              <span className="font-semibold">Genre:</span> {book.genre}
+            </p>
+            <p>
+              <span className="font-semibold">Rating:</span> ⭐ {book.rating}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-2 mt-2">
+              <button
+                onClick={() => handleUpdate(book._id)}
+                className="bg-[#74b9ff] hover:bg-blue-600 text-white py-1 px-4 rounded shadow w-full sm:w-auto"
+              >
+                Update
+              </button>
+              <button
+                onClick={() => handleDelete(book._id)}
+                className="bg-[#ff7675] hover:bg-red-600 text-white py-1 px-4 rounded shadow w-full sm:w-auto"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
