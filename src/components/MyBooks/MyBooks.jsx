@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { AuthContext } from "../../Contexts/AuthContext";
 import { toast, Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
@@ -7,7 +8,9 @@ const MyBooks = () => {
   const { user } = useContext(AuthContext);
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
+  // Fetch user's books
   useEffect(() => {
     if (!user?.email) return;
 
@@ -28,6 +31,7 @@ const MyBooks = () => {
     fetchMyBooks();
   }, [user]);
 
+  // Delete book
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -43,7 +47,6 @@ const MyBooks = () => {
       try {
         const res = await fetch(`http://localhost:3000/books/${id}`, {
           method: "DELETE",
-          headers: { "Content-Type": "application/json" },
         });
         if (res.ok) {
           setBooks(books.filter((book) => book._id !== id));
@@ -58,6 +61,7 @@ const MyBooks = () => {
     }
   };
 
+  // Update book
   const handleUpdate = (id) => {
     Swal.fire({
       title: "Update Book?",
@@ -69,7 +73,7 @@ const MyBooks = () => {
       confirmButtonText: "Yes, update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = `/update-book/${id}`;
+        navigate(`/update-book/${id}`);
       }
     });
   };
@@ -82,12 +86,13 @@ const MyBooks = () => {
     );
   }
 
-  if (books.length === 0)
+  if (books.length === 0) {
     return (
       <p className="text-center mt-10 text-gray-700">
         You have not added any books yet.
       </p>
     );
+  }
 
   return (
     <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8">

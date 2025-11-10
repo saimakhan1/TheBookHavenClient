@@ -15,6 +15,7 @@ import PrivateRoute from "./Routes/PrivateRoute.jsx";
 import BookDetails from "./components/BookDetails/BookDetails.jsx";
 import LogIn from "./components/LogIn/LogIn.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
+import UpdateBook from "./components/UpdateBook/UpdateBook.jsx";
 
 const router = createBrowserRouter([
   {
@@ -64,7 +65,17 @@ const router = createBrowserRouter([
       {
         path:'/login',
         Component:LogIn
-      }
+      },
+         {
+        path: "/update-book/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/books/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateBook></UpdateBook>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);
