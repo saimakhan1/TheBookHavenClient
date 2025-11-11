@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { AuthContext } from "../../Contexts/AuthContext";
 import { toast, Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const MyBooks = () => {
   const { user } = useContext(AuthContext);
@@ -11,25 +12,46 @@ const MyBooks = () => {
   const navigate = useNavigate();
 
   // Fetch user's books
+
+  //axios 6
   useEffect(() => {
-    if (!user?.email) return;
+  if (!user?.email) return;
 
-    const fetchMyBooks = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/all-books");
-        const data = await res.json();
-        const myBooks = data.filter((book) => book.userEmail === user.email);
-        setBooks(myBooks);
-      } catch (error) {
-        console.error(error);
-        toast.error("Failed to load your books");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchMyBooks = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/all-books");
+      const data = res.data;
+      const myBooks = data.filter((book) => book.userEmail === user.email);
+      setBooks(myBooks);
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to load your books");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchMyBooks();
-  }, [user]);
+  fetchMyBooks();
+}, [user]);
+  // useEffect(() => {
+  //   if (!user?.email) return;
+
+  //   const fetchMyBooks = async () => {
+  //     try {
+  //       const res = await fetch("http://localhost:3000/all-books");
+  //       const data = await res.json();
+  //       const myBooks = data.filter((book) => book.userEmail === user.email);
+  //       setBooks(myBooks);
+  //     } catch (error) {
+  //       console.error(error);
+  //       toast.error("Failed to load your books");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchMyBooks();
+  // }, [user]);
 
   // Delete book
   const handleDelete = async (id) => {

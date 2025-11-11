@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { AuthContext } from "../../Contexts/AuthContext";
+import axios from "axios";
 
 const AddBook = () => {
   const { user: loggedInUser } = useContext(AuthContext);
@@ -30,28 +31,52 @@ const AddBook = () => {
       dateAdded: new Date().toISOString(),
     };
 
+    //axios 3
     try {
-      console.log("📦 newBook data before POST:", newBook);
+  console.log("📦 newBook data before POST:", newBook);
 
-      const response = await fetch("http://localhost:3000/books", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newBook),
-      });
+  const response = await axios.post("http://localhost:3000/books", newBook, {
+    headers: { "Content-Type": "application/json" },
+  });
 
-      const result = await response.json();
-      if (result.insertedId) {
-        toast.success("Book added successfully!");
-        form.reset();
-      } else {
-        toast.error("Failed to add book!");
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error("Something went wrong!");
-    } finally {
-      setLoading(false);
-    }
+  // Axios automatically parses JSON, so you can access response.data directly
+  const result = response.data;
+
+  if (result.insertedId) {
+    toast.success("Book added successfully!");
+    form.reset();
+  } else {
+    toast.error("Failed to add book!");
+  }
+} catch (error) {
+  console.error(error);
+  toast.error("Something went wrong!");
+} finally {
+  setLoading(false);
+}
+
+    // try {
+    //   console.log("📦 newBook data before POST:", newBook);
+
+    //   const response = await fetch("http://localhost:3000/books", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(newBook),
+    //   });
+
+    //   const result = await response.json();
+    //   if (result.insertedId) {
+    //     toast.success("Book added successfully!");
+    //     form.reset();
+    //   } else {
+    //     toast.error("Failed to add book!");
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    //   toast.error("Something went wrong!");
+    // } finally {
+    //   setLoading(false);
+    // }
   };
 
   return (

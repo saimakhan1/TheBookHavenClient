@@ -10,10 +10,16 @@ import { format } from 'date-fns';
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import TopBooks from "../TopRatedBooks/TopBooks";
+import axios from "axios";
 
-const popularBooksPromise = fetch("http://localhost:3000/all-books").then(
-  (res) => res.json()
-);
+//axios 5
+const popularBooksPromise = axios
+  .get("http://localhost:3000/all-books")
+  .then((res) => res.data);
+
+// const popularBooksPromise = fetch("http://localhost:3000/all-books").then(
+//   (res) => res.json()
+// );
 
 const Home = () => {
   const [theme, setTheme] = useState("light");

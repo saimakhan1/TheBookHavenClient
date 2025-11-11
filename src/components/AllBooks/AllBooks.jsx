@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 
@@ -5,18 +6,34 @@ const AllBooks = () => {
   const [books, setBooks] = useState([]);
   const [sortOrder, setSortOrder] = useState("high-to-low");
   const [loading, setLoading] = useState(true);
+//axios 4
+useEffect(() => {
+  const fetchBooks = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/all-books");
+      const sortedData = sortBooks(res.data, sortOrder);
+      setBooks(sortedData);
+    } catch (error) {
+      console.error("Error loading books:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchBooks();
+}, []);
 
   // Fetch books
-  useEffect(() => {
-    fetch("http://localhost:3000/all-books")
-      .then((res) => res.json())
-      .then((data) => {
-        const sortedData = sortBooks(data, sortOrder);
-        setBooks(sortedData);
-      })
-      .catch((error) => console.error("Error loading books:", error))
-      .finally(() => setLoading(false));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/all-books")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const sortedData = sortBooks(data, sortOrder);
+  //       setBooks(sortedData);
+  //     })
+  //     .catch((error) => console.error("Error loading books:", error))
+  //     .finally(() => setLoading(false));
+  // }, []);
 
   // Sort books
   const sortBooks = (booksArray, order) => {

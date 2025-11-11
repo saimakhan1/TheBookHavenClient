@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../../Contexts/AuthContext";
 import { toast, Toaster } from "react-hot-toast";
+import axios from "axios";
 
 const BookDetails = () => {
   const book = useLoaderData();
@@ -62,23 +63,43 @@ const BookDetails = () => {
       createdAt: new Date().toISOString(),
     };
 
-    try {
-      const res = await fetch("http://localhost:3000/comments", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newComment),
-      });
-      if (res.ok) {
-        toast.success("Comment added!");
-        setComments((prev) => [...prev, newComment]);
-        setCommentText("");
-      } else {
-        toast.error("Failed to add comment");
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to add comment");
-    }
+    
+//axios 1
+try {
+  const res = await axios.post("http://localhost:3000/comments", newComment, {
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (res.status === 200 || res.status === 201) {
+    toast.success("Comment added!");
+    setComments((prev) => [...prev, newComment]);
+    setCommentText("");
+  } else {
+    toast.error("Failed to add comment");
+  }
+} catch (error) {
+  console.error(error);
+  toast.error("Failed to add comment");
+}
+
+
+    // try {
+    //   const res = await fetch("http://localhost:3000/comments", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(newComment),
+    //   });
+    //   if (res.ok) {
+    //     toast.success("Comment added!");
+    //     setComments((prev) => [...prev, newComment]);
+    //     setCommentText("");
+    //   } else {
+    //     toast.error("Failed to add comment");
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    //   toast.error("Failed to add comment");
+    // }
   };
 
   // Add new review
@@ -93,24 +114,41 @@ const BookDetails = () => {
       review: reviewText,
       createdAt: new Date().toISOString(),
     };
-
+//axios 2
     try {
-      const res = await fetch("http://localhost:3000/reviews", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newReview),
-      });
-      if (res.ok) {
-        toast.success("Review added!");
-        setReviews((prev) => [...prev, newReview]);
-        setReviewText("");
-      } else {
-        toast.error("Failed to add review");
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to add review");
-    }
+  const res = await axios.post("http://localhost:3000/reviews", newReview, {
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (res.status === 200 || res.status === 201) {
+    toast.success("Review added!");
+    setReviews((prev) => [...prev, newReview]); // or res.data if backend returns the saved review
+    setReviewText("");
+  } else {
+    toast.error("Failed to add review");
+  }
+} catch (error) {
+  console.error(error);
+  toast.error("Failed to add review");
+}
+
+    // try {
+    //   const res = await fetch("http://localhost:3000/reviews", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(newReview),
+    //   });
+    //   if (res.ok) {
+    //     toast.success("Review added!");
+    //     setReviews((prev) => [...prev, newReview]);
+    //     setReviewText("");
+    //   } else {
+    //     toast.error("Failed to add review");
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    //   toast.error("Failed to add review");
+    // }
   };
 
   return (
