@@ -1,15 +1,3 @@
-// import React from 'react';
-
-// const Banner = () => {
-//     return (
-//         <div>
-            
-//         </div>
-//     );
-// };
-
-// export default Banner;
-
 import React, { useEffect, useState } from "react";
 
 const images = [
