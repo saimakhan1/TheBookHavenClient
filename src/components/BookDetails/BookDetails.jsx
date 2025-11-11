@@ -83,23 +83,7 @@ try {
 }
 
 
-    // try {
-    //   const res = await fetch("http://localhost:3000/comments", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(newComment),
-    //   });
-    //   if (res.ok) {
-    //     toast.success("Comment added!");
-    //     setComments((prev) => [...prev, newComment]);
-    //     setCommentText("");
-    //   } else {
-    //     toast.error("Failed to add comment");
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   toast.error("Failed to add comment");
-    // }
+ 
   };
 
   // Add new review
@@ -132,23 +116,7 @@ try {
   toast.error("Failed to add review");
 }
 
-    // try {
-    //   const res = await fetch("http://localhost:3000/reviews", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(newReview),
-    //   });
-    //   if (res.ok) {
-    //     toast.success("Review added!");
-    //     setReviews((prev) => [...prev, newReview]);
-    //     setReviewText("");
-    //   } else {
-    //     toast.error("Failed to add review");
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   toast.error("Failed to add review");
-    // }
+  
   };
 
   return (

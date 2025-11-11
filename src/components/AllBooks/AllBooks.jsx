@@ -23,17 +23,7 @@ useEffect(() => {
   fetchBooks();
 }, []);
 
-  // Fetch books
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/all-books")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const sortedData = sortBooks(data, sortOrder);
-  //       setBooks(sortedData);
-  //     })
-  //     .catch((error) => console.error("Error loading books:", error))
-  //     .finally(() => setLoading(false));
-  // }, []);
+ 
 
   // Sort books
   const sortBooks = (booksArray, order) => {

@@ -17,9 +17,7 @@ const popularBooksPromise = axios
   .get("http://localhost:3000/all-books")
   .then((res) => res.data);
 
-// const popularBooksPromise = fetch("http://localhost:3000/all-books").then(
-//   (res) => res.json()
-// );
+
 
 const Home = () => {
   const [theme, setTheme] = useState("light");

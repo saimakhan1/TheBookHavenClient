@@ -33,25 +33,7 @@ const MyBooks = () => {
 
   fetchMyBooks();
 }, [user]);
-  // useEffect(() => {
-  //   if (!user?.email) return;
-
-  //   const fetchMyBooks = async () => {
-  //     try {
-  //       const res = await fetch("http://localhost:3000/all-books");
-  //       const data = await res.json();
-  //       const myBooks = data.filter((book) => book.userEmail === user.email);
-  //       setBooks(myBooks);
-  //     } catch (error) {
-  //       console.error(error);
-  //       toast.error("Failed to load your books");
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchMyBooks();
-  // }, [user]);
+  
 
   // Delete book
   const handleDelete = async (id) => {

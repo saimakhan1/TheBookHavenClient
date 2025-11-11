@@ -55,28 +55,7 @@ const AddBook = () => {
   setLoading(false);
 }
 
-    // try {
-    //   console.log("📦 newBook data before POST:", newBook);
-
-    //   const response = await fetch("http://localhost:3000/books", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(newBook),
-    //   });
-
-    //   const result = await response.json();
-    //   if (result.insertedId) {
-    //     toast.success("Book added successfully!");
-    //     form.reset();
-    //   } else {
-    //     toast.error("Failed to add book!");
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   toast.error("Something went wrong!");
-    // } finally {
-    //   setLoading(false);
-    // }
+  
   };
 
   return (
