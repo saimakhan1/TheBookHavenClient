@@ -7,12 +7,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAKXDsTvVPy0fFMICGMQh-zg12jbmuKBiE",
-  authDomain: "thebookhavenbysaima.firebaseapp.com",
-  projectId: "thebookhavenbysaima",
-  storageBucket: "thebookhavenbysaima.firebasestorage.app",
-  messagingSenderId: "128319761365",
-  appId: "1:128319761365:web:c75207d5805b4e3a07eb5c",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase

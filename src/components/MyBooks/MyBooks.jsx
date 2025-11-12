@@ -1,3 +1,5 @@
+
+
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../../Contexts/AuthContext";
@@ -12,28 +14,25 @@ const MyBooks = () => {
   const navigate = useNavigate();
 
   // Fetch user's books
-
-  //axios 6
   useEffect(() => {
-  if (!user?.email) return;
+    if (!user?.email) return;
 
-  const fetchMyBooks = async () => {
-    try {
-      const res = await axios.get("http://localhost:3000/all-books");
-      const data = res.data;
-      const myBooks = data.filter((book) => book.userEmail === user.email);
-      setBooks(myBooks);
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to load your books");
-    } finally {
-      setLoading(false);
-    }
-  };
+    const fetchMyBooks = async () => {
+      try {
+        const res = await axios.get("https://the-book-haven-server-rose.vercel.app/all-books");
+        const data = res.data;
+        const myBooks = data.filter((book) => book.userEmail === user.email);
+        setBooks(myBooks);
+      } catch (error) {
+        console.error(error);
+        toast.error("Failed to load your books");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  fetchMyBooks();
-}, [user]);
-  
+    fetchMyBooks();
+  }, [user]);
 
   // Delete book
   const handleDelete = async (id) => {
@@ -49,7 +48,7 @@ const MyBooks = () => {
 
     if (result.isConfirmed) {
       try {
-        const res = await fetch(`http://localhost:3000/books/${id}`, {
+        const res = await fetch(`https://the-book-haven-server-rose.vercel.app/books/${id}`, {
           method: "DELETE",
         });
         if (res.ok) {
@@ -121,7 +120,7 @@ const MyBooks = () => {
             {books.map((book) => (
               <tr
                 key={book._id}
-                className="hover:bg-gray-100 border-b border-gray-200"
+                className="hover:bg-gray-100 hover:text-gray-900 border-b border-gray-200"
               >
                 <td className="py-2 px-4">{book.title}</td>
                 <td className="py-2 px-4">{book.author}</td>
@@ -150,39 +149,41 @@ const MyBooks = () => {
       </div>
 
       {/* Mobile Cards */}
+      
+
       <div className="md:hidden space-y-4">
-        {books.map((book) => (
-          <div
-            key={book._id}
-            className="bg-white rounded-lg shadow p-4 flex flex-col gap-2 border border-gray-200"
-          >
-            <h3 className="font-bold text-lg text-[#0abde3]">{book.title}</h3>
-            <p>
-              <span className="font-semibold">Author:</span> {book.author}
-            </p>
-            <p>
-              <span className="font-semibold">Genre:</span> {book.genre}
-            </p>
-            <p>
-              <span className="font-semibold">Rating:</span> ⭐ {book.rating}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-2 mt-2">
-              <button
-                onClick={() => handleUpdate(book._id)}
-                className="bg-[#74b9ff] hover:bg-blue-600 text-white py-1 px-4 rounded shadow w-full sm:w-auto"
-              >
-                Update
-              </button>
-              <button
-                onClick={() => handleDelete(book._id)}
-                className="bg-[#ff7675] hover:bg-red-600 text-white py-1 px-4 rounded shadow w-full sm:w-auto"
-              >
-                Delete
-              </button>
-            </div>
-          </div>
-        ))}
+  {books.map((book) => (
+    <div
+      key={book._id}
+      className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 flex flex-col gap-2 border border-gray-200 dark:border-gray-700"
+    >
+      <h3 className="font-bold text-lg text-[#0abde3] dark:text-[#74b9ff]">{book.title}</h3>
+      <p className="text-gray-700 dark:text-gray-100">
+        <span className="font-semibold">Author:</span> {book.author}
+      </p>
+      <p className="text-gray-700 dark:text-gray-100">
+        <span className="font-semibold">Genre:</span> {book.genre}
+      </p>
+      <p className="text-gray-700 dark:text-gray-100">
+        <span className="font-semibold">Rating:</span> ⭐ {book.rating}
+      </p>
+      <div className="flex flex-col sm:flex-row gap-2 mt-2">
+        <button
+          onClick={() => handleUpdate(book._id)}
+          className="bg-[#74b9ff] hover:bg-blue-600 text-white py-1 px-4 rounded shadow w-full sm:w-auto"
+        >
+          Update
+        </button>
+        <button
+          onClick={() => handleDelete(book._id)}
+          className="bg-[#ff7675] hover:bg-red-600 text-white py-1 px-4 rounded shadow w-full sm:w-auto"
+        >
+          Delete
+        </button>
       </div>
+    </div>
+  ))}
+</div>
     </div>
   );
 };

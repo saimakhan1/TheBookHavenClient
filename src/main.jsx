@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       {
         path: "/book-details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/books/${params.id}`),
+          fetch(`https://the-book-haven-server-rose.vercel.app/books/${params.id}`),
         element: (
           <PrivateRoute>
             <BookDetails></BookDetails>
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
          {
         path: "/update-book/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/books/${params.id}`),
+          fetch(`https://the-book-haven-server-rose.vercel.app/books/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateBook></UpdateBook>

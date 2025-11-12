@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
@@ -29,7 +31,7 @@ const UpdateBook = () => {
     if (!confirm.isConfirmed) return;
 
     try {
-      const res = await fetch(`http://localhost:3000/books/${book._id}`, {
+      const res = await fetch(`https://the-book-haven-server-rose.vercel.app/books/${book._id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedBook),
@@ -51,52 +53,60 @@ const UpdateBook = () => {
   return (
     <div className="max-w-3xl mx-auto p-6">
       <Toaster />
-      <h2 className="text-3xl font-bold text-center text-[#0abde3] mb-6">
+      <h2 className="text-3xl font-bold text-center text-[#0abde3] mb-6 dark:text-[#74b9ff]">
         Update Book
       </h2>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white rounded-lg shadow-lg p-6 space-y-4 border border-gray-200"
+        className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 space-y-4 border border-gray-200 dark:border-gray-700"
       >
         <div>
-          <label className="block mb-1 font-semibold">Title</label>
+          <label className="block mb-1 font-semibold text-gray-900 dark:text-gray-100">
+            Title
+          </label>
           <input
             type="text"
             name="title"
             value={updatedBook.title || ""}
             onChange={handleChange}
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 rounded"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-semibold">Author</label>
+          <label className="block mb-1 font-semibold text-gray-900 dark:text-gray-100">
+            Author
+          </label>
           <input
             type="text"
             name="author"
             value={updatedBook.author || ""}
             onChange={handleChange}
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 rounded"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-semibold">Genre</label>
+          <label className="block mb-1 font-semibold text-gray-900 dark:text-gray-100">
+            Genre
+          </label>
           <input
             type="text"
             name="genre"
             value={updatedBook.genre || ""}
             onChange={handleChange}
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 rounded"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-semibold">Rating</label>
+          <label className="block mb-1 font-semibold text-gray-900 dark:text-gray-100">
+            Rating
+          </label>
           <input
             type="number"
             name="rating"
@@ -105,29 +115,33 @@ const UpdateBook = () => {
             step="0.1"
             value={updatedBook.rating || ""}
             onChange={handleChange}
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 rounded"
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-semibold">Summary</label>
+          <label className="block mb-1 font-semibold text-gray-900 dark:text-gray-100">
+            Summary
+          </label>
           <textarea
             name="summary"
             value={updatedBook.summary || ""}
             onChange={handleChange}
             rows="4"
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 rounded"
           ></textarea>
         </div>
 
         <div>
-          <label className="block mb-1 font-semibold">Cover Image URL</label>
+          <label className="block mb-1 font-semibold text-gray-900 dark:text-gray-100">
+            Cover Image URL
+          </label>
           <input
             type="text"
             name="coverImage"
             value={updatedBook.coverImage || ""}
             onChange={handleChange}
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3 py-2 rounded"
           />
         </div>
 

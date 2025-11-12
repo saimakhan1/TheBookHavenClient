@@ -14,7 +14,7 @@ import axios from "axios";
 
 //axios 5
 const popularBooksPromise = axios
-  .get("http://localhost:3000/all-books")
+  .get("https://the-book-haven-server-rose.vercel.app/all-books")
   .then((res) => res.data);
 
 
@@ -43,7 +43,7 @@ const Home = () => {
     <div className="transition-colors duration-500 min-h-screen">
       {/* Toggle Button */}
       <div className="flex justify-end p-4">
-        <span className="bg-blue-200 px-5 py-2 border-blue-400 border-1 rounded-xl mr-4" data-tooltip-id="my-tooltip"
+        <span className="bg-[#0a8bbf] px-5 py-2 border-blue-400 border-1 rounded-xl mr-4" data-tooltip-id="my-tooltip"
         data-tooltip-content="Today's Date">{format(today, 'yyyy-MM-dd')}</span>
          <Tooltip id="my-tooltip" place="top" effect="solid" />
         <button

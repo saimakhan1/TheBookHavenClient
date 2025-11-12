@@ -47,7 +47,7 @@ const Register = () => {
         // Save user to database
         //axios 7
         axios 
-          .post("http://localhost:3000/users", newUser, {
+          .post("https://the-book-haven-server-rose.vercel.app/users", newUser, {
             headers: { "Content-Type": "application/json" },
           })
           .then((res) => {
@@ -76,7 +76,7 @@ const Register = () => {
         // Save user to database
         //axios 8
         axios
-          .post("http://localhost:3000/users", newUser, {
+          .post("https://the-book-haven-server-rose.vercel.app/users", newUser, {
             headers: { "Content-Type": "application/json" },
           })
           .then((res) => {

@@ -21,7 +21,7 @@ const genres = [
 
 const TopGenres = () => {
   return (
-    <section className="py-16 bg-[#f0f9ff]">
+    <section className="py-16 mb-0 bg-[#f0f9ff]">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#0abde3] mb-12">
           Top Genres
