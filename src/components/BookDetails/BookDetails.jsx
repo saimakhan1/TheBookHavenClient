@@ -23,29 +23,37 @@ const BookDetails = () => {
 
   // Fetch comments
   const fetchComments = async () => {
-    try {
-      const res = await fetch(`https://the-book-haven-server-rose.vercel.app/comments?bookId=${bookId}`);
-      const data = await res.json();
-      setComments(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoadingComments(false);
-    }
-  };
+  try {
+    const res = await axios.get(
+      `https://the-book-haven-server-rose.vercel.app/comments`,
+      {
+        params: { bookId }, // axios automatically builds the query string
+      }
+    );
+    setComments(res.data);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoadingComments(false);
+  }
+};
 
   // Fetch reviews
-  const fetchReviews = async () => {
-    try {
-      const res = await fetch(`https://the-book-haven-server-rose.vercel.app/reviews?bookId=${bookId}`);
-      const data = await res.json();
-      setReviews(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoadingReviews(false);
-    }
-  };
+ const fetchReviews = async () => {
+  try {
+    const res = await axios.get(
+      "https://the-book-haven-server-rose.vercel.app/reviews",
+      {
+        params: { bookId }, // axios automatically handles query string
+      }
+    );
+    setReviews(res.data);
+  } catch (error) {
+    console.error(error);
+  } finally {
+    setLoadingReviews(false);
+  }
+};
 
   useEffect(() => {
     fetchComments();

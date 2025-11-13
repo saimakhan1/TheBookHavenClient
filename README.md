@@ -1,5 +1,5 @@
-
-# 📚 Book Haven
+___________________________________________________________________________________________________
+# Name of the Website: 📚 Book Haven
 
 Book Haven is a full-stack web application where users can explore, add, update, and delete books in a digital library. The platform allows authenticated users to manage their own book data securely. It integrates React, Node.js, Express.js, MongoDB, and Firebase Authentication to provide a smooth and modern user experience.
 
@@ -17,7 +17,7 @@ Book Haven is a full-stack web application where users can explore, add, update,
 
 🌍 MongoDB + Express Backend — RESTful API powered by Express.js and MongoDB Atlas for fast and reliable data handling.
 
-🎨 Responsive UI — A modern React-based frontend designed to be fully responsive across desktop and mobile devices.
+🎨 Responsive UI — A modern React-based frontend designed to be fully responsive across all devices.
 
 🌙 Dark Mode Support — Offers both light and dark themes for an enhanced reading experience.
 
@@ -41,8 +41,7 @@ Book Haven is a full-stack web application where users can explore, add, update,
 **Hosting:** Vercel (Client) & Render/Atlas (Server)  
 
 _______________________________________________________________________________
-Server side live link (vercel): https://the-book-haven-server-rose.vercel.app/
+Server-side live link (Vercel): https://the-book-haven-server-rose.vercel.app/
 
-
-Client side deployed live link (Firebase): https://thebookhavenbysaima.web.app/
+Client-side live link (Firebase): https://thebookhavenbysaima.web.app/
 

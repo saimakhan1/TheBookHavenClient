@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";

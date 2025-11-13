@@ -1,7 +1,3 @@
-
-
-
-
 import PopularBooks from "../PopularBooks/PopularBooks";
 import Banner from "../Banner/Banner";
 import AboutBookHaven from "../AboutBookHaven/AboutBookHaven";
@@ -20,9 +16,6 @@ const popularBooksPromise = axios
 
 
 const Home = () => {
-  
-   
-
   return (
     <div className="transition-colors duration-500 min-h-screen">
      <DarkLight></DarkLight>

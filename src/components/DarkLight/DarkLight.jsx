@@ -33,29 +33,9 @@ const DarkLight = () => {
         data-tooltip-content="Today's Date">{format(today, 'yyyy-MM-dd')}</span>
          <Tooltip id="my-tooltip" place="top" effect="solid" />
          <ToggleButton theme={theme} toggleTheme={toggleTheme} />
-        {/* <button
-          onClick={toggleTheme}
-          className={`btn btn-outline flex items-center gap-2 px-5 py-2 rounded-full font-semibold shadow-lg transform transition-transform duration-300 hover:scale-105 ${
-            theme === "light" ? "bg-white text-gray-800 border-gray-400 hover:bg-gray-100" : "bg-gray-800 text-white border-gray-600 hover:bg-gray-700"
-          }`}
-        >
-          {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
-        </button> */}
+        
       </div>
-      {/* new addition */}
-        <nav>
-      {/* Option 1: Use the ToggleButton component */}
-      {/* <ToggleButton theme={theme} toggleTheme={toggleTheme} /> */}
 
-      {/* Option 2: Or use this DaisyUI toggle input */}
-      {/* <input
-        type="checkbox"
-        value="dark"
-        className="toggle theme-controller mr-6 text-white"
-        checked={theme === "dark"}
-        onChange={(e) => toggleTheme(e.target.checked)}
-      /> */}
-    </nav>
         </div>
     );
 };

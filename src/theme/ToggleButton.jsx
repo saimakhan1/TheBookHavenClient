@@ -1,5 +1,5 @@
 import React from "react";
-import { Moon, Sun } from "lucide-react"; // optional icons (install with: npm i lucide-react)
+import { Moon, Sun } from "lucide-react"; 
 
 /**
  * A toggle switch for switching between light and dark themes.

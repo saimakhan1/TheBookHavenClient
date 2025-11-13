@@ -10,7 +10,7 @@ const TopBooks = () => {
     const fetchTopBooks = async () => {
       try {
         const res = await axios.get("https://the-book-haven-server-rose.vercel.app/top-books");
-        setTopBooks(res.data); // Axios automatically parses JSON
+        setTopBooks(res.data); 
       } catch (err) {
         console.error(err);
       }

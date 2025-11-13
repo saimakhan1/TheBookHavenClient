@@ -7,7 +7,7 @@ const Footer = () => {
     <div>
       <footer className="bg-[#0abde3] text-white py-8">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-        {/* Left: Project Info */}
+      
         <div className="text-center md:text-left">
           <h2 className="text-xl font-bold">TheBookHaven</h2>
           <p className="text-sm mt-1">
@@ -15,7 +15,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Middle: Social Icons */}
+        
         <div className="flex gap-4">
           <a
             href="#"

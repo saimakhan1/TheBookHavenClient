@@ -14,7 +14,7 @@ const PrivateRoute = ({ children }) => {
     return children;
   }
 
-  // Minimal fix: wrap location in an object as `from`
+
   return <Navigate to="/login" state={{ from: location }} replace />;
 };
 
