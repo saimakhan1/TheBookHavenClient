@@ -11,12 +11,25 @@ Book Haven is a full-stack web application where users can explore, add, update,
 
 ## Features
 
-- 🔐 **Firebase Authentication** — Secure login and registration system using Firebase Auth.  
-- 📖 **Dynamic Book Management** — Users can add, update, and delete their own books.  
-- 🌍 **MongoDB + Express Backend** — RESTful API built with Express.js and MongoDB Atlas for fast and reliable data handling.  
-- 🎨 **Responsive UI** — Modern React-based frontend with responsive design for desktop and mobile users.  
-- 🌙 **Dark Mode Support** — Elegant light and dark themes to improve the reading experience.  
-- ⭐ **Top Rated Books Section** — Displays the most popular books sorted by rating.  
+🔐 Firebase Authentication — Implements a secure login and registration system using Firebase Auth.
+
+📖 Dynamic Book Management — Allows users to add, update, and delete their own books with ease.
+
+🌍 MongoDB + Express Backend — RESTful API powered by Express.js and MongoDB Atlas for fast and reliable data handling.
+
+🎨 Responsive UI — A modern React-based frontend designed to be fully responsive across desktop and mobile devices.
+
+🌙 Dark Mode Support — Offers both light and dark themes for an enhanced reading experience.
+
+⭐ Top-Rated Books Section — Highlights the most popular books based on user ratings.
+
+👤 Dynamic Navigation Bar — The navigation bar adapts based on user authentication status:
+
+    When logged out, it displays Home, All Books, Login, and Register.
+
+    When logged in, it shows Home, All Books, My Books, Add Book, and Logout.
+
+    The user’s profile photo also appears beside the navigation links (when logged in), and hovering over it reveals the user’s name.
 
 ---
 
