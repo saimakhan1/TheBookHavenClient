@@ -28,8 +28,8 @@ Book Haven is a full-stack web application where users can explore, add, update,
 **Hosting:** Vercel (Client) & Render/Atlas (Server)  
 
 _______________________________________________________________________________
-server side live link (vercel): https://the-book-haven-server-rose.vercel.app/
+Server side live link (vercel): https://the-book-haven-server-rose.vercel.app/
 
 
-client side deployed live link (Firebase): https://thebookhavenbysaima.web.app/
+Client side deployed live link (Firebase): https://thebookhavenbysaima.web.app/
 
