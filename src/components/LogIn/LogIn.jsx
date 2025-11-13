@@ -70,6 +70,7 @@ const LogIn = () => {
             >
               Log In Now
             </button>
+            <a className="text-blue-600 underline dark:text-blue-200" href="#">Forget Password?</a>
           </form>
 
           <div className="divider text-gray-400 dark:text-gray-500 mt-6">OR</div>
