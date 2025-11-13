@@ -39,7 +39,7 @@ const Banner = () => {
 
       {/* Text + Buttons */}
       <div className="relative z-10 flex flex-col justify-center items-center text-center h-full px-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 bg-black opacity-70 p-4 rounded-2xl">
           Welcome to <span className="text-[#0abde3]">The Book Haven</span>
         </h1>
         <p className="text-lg text-white/90 mb-6">
