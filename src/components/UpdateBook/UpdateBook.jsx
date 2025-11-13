@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { toast, Toaster } from "react-hot-toast";
+import DarkLight from "../DarkLight/DarkLight";
 
 const UpdateBook = () => {
   const book = useLoaderData();
@@ -51,7 +52,10 @@ const UpdateBook = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+   <div>
+    <DarkLight></DarkLight>
+     <div className="max-w-3xl mx-auto p-6">
+      
       <Toaster />
       <h2 className="text-3xl font-bold text-center text-[#0abde3] mb-6 dark:text-[#74b9ff]">
         Update Book
@@ -153,6 +157,7 @@ const UpdateBook = () => {
         </button>
       </form>
     </div>
+   </div>
   );
 };
 

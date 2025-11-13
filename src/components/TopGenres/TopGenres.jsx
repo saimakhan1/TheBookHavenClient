@@ -1,3 +1,5 @@
+
+
 import React from "react";
 
 const genres = [
@@ -16,14 +18,14 @@ const genres = [
   {
     name: "Adventure",
     image: "https://i.ibb.co/vv4gBMYW/icebound.jpg",
-  }
+  },
 ];
 
 const TopGenres = () => {
   return (
-    <section className="py-16 mb-0 bg-[#f0f9ff]">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#0abde3] mb-12">
+    <section className="py-16 mb-0 bg-[#f0f9ff] dark:bg-gray-900 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-[#0abde3] dark:text-[#38d3f8] mb-12">
           Top Genres
         </h2>
 
@@ -31,7 +33,7 @@ const TopGenres = () => {
           {genres.map((genre, idx) => (
             <div
               key={idx}
-              className="relative cursor-pointer overflow-hidden rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105"
+              className="relative cursor-pointer overflow-hidden rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 dark:shadow-gray-700"
             >
               <img
                 src={genre.image}
@@ -39,7 +41,7 @@ const TopGenres = () => {
                 className="w-full h-56 object-cover"
               />
               {/* Always visible genre name */}
-              <div className="absolute bottom-0 left-0 right-0 bg-[#0abde3]/90 text-center py-2">
+              <div className="absolute bottom-0 left-0 right-0 bg-[#0abde3]/90 dark:bg-[#38d3f8]/90 text-center py-2 transition-colors duration-300">
                 <h3 className="text-white text-lg md:text-xl font-semibold">
                   {genre.name}
                 </h3>
@@ -53,3 +55,4 @@ const TopGenres = () => {
 };
 
 export default TopGenres;
+

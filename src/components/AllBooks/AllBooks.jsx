@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import DarkLight from "../DarkLight/DarkLight";
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
@@ -51,8 +52,9 @@ const AllBooks = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-100 to-blue-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 md:px-10">
-      <h2 className="text-4xl font-bold text-center text-purple-800 dark:text-purple-300 mb-6">
+    <div className="min-h-screen bg-blue-100 dark:bg-gray-800 py-12 px-4 md:px-10">
+      <DarkLight></DarkLight>
+      <h2 className="text-4xl font-bold text-center mb-6 text-gray-700 dark:text-gray-200">
         📚 All Books Collection
       </h2>
 
@@ -82,7 +84,7 @@ const AllBooks = () => {
       </div>
 
       {/* Desktop Table */}
-      <div className="hidden md:block overflow-x-auto bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-6 border border-gray-100 dark:border-gray-700">
+      <div className="hidden md:block overflow-x-auto bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-6 border border-gray-100 dark:border-gray-700 text-black dark:text-white">
         <table className="min-w-full table-auto text-center">
           <thead className="bg-[#0abde3] dark:bg-[#0894b3] text-white text-lg">
             <tr>

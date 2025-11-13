@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { AuthContext } from "../../Contexts/AuthContext";
 import axios from "axios";
+import DarkLight from "../DarkLight/DarkLight";
 
 const AddBook = () => {
   const { user: loggedInUser } = useContext(AuthContext);
@@ -54,8 +55,11 @@ const AddBook = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-50 dark:bg-gray-900 py-6 px-4 sm:px-6 md:px-8 transition-colors duration-300">
+    <div>
+      <DarkLight></DarkLight>
+      <div className="min-h-screen flex items-center justify-center bg-blue-50 dark:bg-gray-900 py-6 px-4 sm:px-6 md:px-8 transition-colors duration-300">
       <Toaster />
+      
       <div className="w-full max-w-3xl bg-blue-50 dark:bg-gray-800 shadow-md rounded-lg p-6 sm:p-8 border border-gray-200 dark:border-gray-700">
         <h2 className="text-3xl font-bold text-center text-[#0abde3] dark:text-[#4fd1c5] mb-6">
           Add a New Book
@@ -175,6 +179,7 @@ const AddBook = () => {
           </button>
         </form>
       </div>
+    </div>
     </div>
   );
 };
