@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../../Contexts/AuthContext";
 import { useLocation, useNavigate } from "react-router";
 import { toast, Toaster } from "react-hot-toast";
+import DarkLight from "../DarkLight/DarkLight";
 
 const LogIn = () => {
   const { signInUser, signInWithGoogle } = useContext(AuthContext);
@@ -34,27 +35,30 @@ const LogIn = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#e0f7fa] to-[#d0f0ff] flex justify-center items-center py-10">
+    <div className="bg-[#e6f7fa] dark:bg-gray-900">
+      <DarkLight></DarkLight>
+      <div className="min-h-screen bg-gradient-to-br from-[#e0f7fa] to-[#d0f0ff] dark:from-gray-900 dark:to-gray-800 flex justify-center items-center py-10">
       <Toaster position="top-right" />
-      <div className="card w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
+      
+      <div className="card w-full max-w-md bg-white dark:bg-gray-700 rounded-3xl shadow-2xl overflow-hidden">
         <div className="p-8">
-          <h2 className="text-3xl font-bold text-center text-[#0abde3] mb-6">
+          <h2 className="text-3xl font-bold text-center text-[#0abde3] dark:text-[#38d3f8] mb-6">
             Please Log In
           </h2>
           <form onSubmit={handleSignInUser} className="flex flex-col gap-4">
-            <label className="label font-semibold text-gray-700">Email</label>
+            <label className="label font-semibold text-gray-700 dark:text-gray-300">Email</label>
             <input
               type="email"
-              className="input input-bordered w-full focus:border-[#0abde3] focus:ring focus:ring-[#0abde3]/30"
+              className="input input-bordered w-full focus:border-[#0abde3] focus:ring focus:ring-[#0abde3]/30 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100 dark:focus:border-[#38d3f8] dark:focus:ring-[#38d3f8]/30"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <label className="label font-semibold text-gray-700">Password</label>
+            <label className="label font-semibold text-gray-700 dark:text-gray-300">Password</label>
             <input
               type="password"
-              className="input input-bordered w-full focus:border-[#0abde3] focus:ring focus:ring-[#0abde3]/30"
+              className="input input-bordered w-full focus:border-[#0abde3] focus:ring focus:ring-[#0abde3]/30 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100 dark:focus:border-[#38d3f8] dark:focus:ring-[#38d3f8]/30"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -62,17 +66,17 @@ const LogIn = () => {
             />
             <button
               type="submit"
-              className="btn w-full bg-[#0abde3] hover:bg-[#0097c2] text-white font-semibold mt-4"
+              className="btn w-full bg-[#0abde3] hover:bg-[#0097c2] dark:bg-[#38d3f8] dark:hover:bg-[#0aa4e0] text-white font-semibold mt-4 transition-colors duration-300"
             >
               Log In Now
             </button>
           </form>
 
-          <div className="divider text-gray-400 mt-6">OR</div>
+          <div className="divider text-gray-400 dark:text-gray-500 mt-6">OR</div>
 
           <button
             onClick={handleGoogleSignIn}
-            className="btn w-full flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 hover:bg-gray-100 mt-2"
+            className="btn w-full flex items-center justify-center gap-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 mt-2 transition-colors duration-300"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -101,10 +105,10 @@ const LogIn = () => {
           </button>
 
           {/* Register link */}
-          <p className="text-center text-gray-600 mt-4">
+          <p className="text-center text-gray-600 dark:text-gray-300 mt-4">
             Don't have an account?{" "}
             <span
-              className="text-[#0abde3] font-semibold cursor-pointer hover:underline"
+              className="text-[#0abde3] dark:text-[#38d3f8] font-semibold cursor-pointer hover:underline"
               onClick={() => navigate("/register")}
             >
               Register here
@@ -112,6 +116,7 @@ const LogIn = () => {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 };
